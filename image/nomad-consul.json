@@ -1,0 +1,42 @@
+{
+  "min_packer_version": "1.0.4",
+  "variables": {
+    "project_id": "composite-area-228711",
+    "zone": "europe-west1-b",
+    "nomad_version": "0.8.7",
+    "consul_module_version": "v0.0.1",
+    "consul_version": "1.4.4"
+  },
+  "builders": [
+    {
+      "type": "googlecompute",
+      "image_name": "mcord-nomad-0.8.7",
+      "image_family": "nomad-consul",
+      "project_id": "{{user `project_id`}}",
+      "source_image_family": "ubuntu-1604-lts",
+      "zone": "{{user `zone`}}",
+      "ssh_username": "ubuntu"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "{{template_dir}}/scripts",
+      "destination": "/tmp"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "/tmp/nomad/install --version {{user `nomad_version`}}"
+      ],
+      "pause_before": "30s"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "/tmp/consul/install --version {{user `consul_version`}}"
+      ],
+      "pause_before": "30s"
+    }
+  ]
+}
