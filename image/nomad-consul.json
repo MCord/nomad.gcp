@@ -27,14 +27,14 @@
     {
       "type": "shell",
       "inline": [
-        "/tmp/nomad/install --version {{user `nomad_version`}}"
+        "/tmp/scripts/nomad/install --version {{user `nomad_version`}}"
       ],
       "pause_before": "30s"
     },
     {
       "type": "shell",
       "inline": [
-        "/tmp/consul/install --version {{user `consul_version`}}"
+        "/tmp/scripts/consul/install --version {{user `consul_version`}}"
       ],
       "pause_before": "30s"
     }
