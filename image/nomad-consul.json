@@ -1,7 +1,7 @@
 {
   "min_packer_version": "1.0.4",
   "variables": {
-    "project_id": "composite-area-228711",
+    "project_id": "transport-sandbox",
     "zone": "europe-west1-b",
     "nomad_version": "0.8.7",
     "consul_module_version": "v0.0.1",
